@@ -1,0 +1,7 @@
+<div class="backdrop" (click)="closeCart()">
+    <dialog open (click)="$event.stopPropagation()">
+        <h1>Your Cart</h1>
+        <hr>
+        <app-cart-product></app-cart-product>
+    </dialog>
+</div>

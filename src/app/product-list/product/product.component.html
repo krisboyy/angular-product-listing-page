@@ -1,0 +1,21 @@
+<div class="product-container">
+    <div class="product-image"><img src="{{product.image | img}}" alt=""></div>
+    <div class="product-details">
+        <h3>{{product.name}} ({{product.color}}, {{product.rom}} GB)</h3>
+        <div class="product-rating"><fa-icon [icon]="faStar"></fa-icon><p>{{product.avgRating}}</p></div>
+        <ul>
+            <li *ngIf="product.expandable!==undefined; else productNotExpandable">{{product.ram}} GB RAM | {{product.rom}} GB ROM | Expandable upto {{product.expandable!/1000}} TB</li>
+            <ng-template  #productNotExpandable><li>{{product.ram}} GB RAM | {{product.rom}} GB ROM</li></ng-template>
+            <li>{{(product.screenSize * 2.54).toFixed(2)}} cm ({{product.screenSize}}) {{product.displaySpec}} Display</li>
+            <li><span *ngFor="let cam of product.rearCameraDetails; let isLast=last">{{cam}} MP<span *ngIf="!isLast; else lastCam"> + </span><ng-template #lastCam><span> Rear Camera | </span></ng-template></span><span *ngFor="let cam of product.frontCameraDetails; let isLast=last">{{cam}} MP<span *ngIf="!isLast; else lastCam"> + </span><ng-template #lastCam><span> Front Camera</span></ng-template></span> </li>
+            <li>{{product.battery}} mAh Battery</li>
+            <li>{{product.soc}} Processor</li>
+        </ul>
+    </div>
+    <div class="priceAndCart">
+        <h2>₹{{product.price | number}}</h2>
+        <p class="mrp">₹{{product.mrp | number}}</p><p class="discountPerc">{{(((product.mrp/product.price))*100-100).toFixed(0)}}% off</p>
+        <p class="delivery">Free delivery</p>
+        <button (click)="addProductToCart()">Add to cart</button>
+    </div>
+</div>
