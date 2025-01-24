@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductComponent } from "./product/product.component";
 import { ProductService } from '../product.service';
 import { Product } from '../product';
@@ -11,10 +11,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
-  productList!: Product[];
+  @Input({required: true}) filters!: {battery: number[], price: string}
 
-  constructor(private productService: ProductService){
-    this.productList = this.productService.productList;
-    console.log("Got product list!", this.productList)
+  get productList(){
+    return this.productService.productList(this.filters)
   }
+
+  constructor(private productService: ProductService){}
 }

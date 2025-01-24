@@ -1,5 +1,5 @@
 <app-header></app-header>
 <main>
-  <app-filter></app-filter>
-  <app-product-list></app-product-list>
+  <app-filter (emitFilters)="onFilterChange($event)"></app-filter>
+  <app-product-list [filters]="filters"></app-product-list>
 </main>

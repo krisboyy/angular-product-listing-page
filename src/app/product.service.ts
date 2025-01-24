@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
+import { Filter } from './filter';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  private filter: Filter = {
+    battery: {
+      '5000': false,
+      '5200': false
+    },
+    price: {
+      "lt10000": false,
+      "10-15": false,
+      "gt15000": false
+    }
+  }
+
   private products: Product[] = [
     {
       name: 'realme 12x 5G',
@@ -135,12 +148,29 @@ export class ProductService {
 
   private userCart: Product[] = [];
 
-  get productList() {
-    return this.products;
+  productList(filter: {battery: number[], price: string}) {
+    return this.products.filter(product => {
+      const batteryMatch = filter.battery.length === 0 || 
+                          filter.battery.includes(product.battery);
+      
+      const priceMatch = this.checkPriceRange(product.price, filter.price);
+      
+      return batteryMatch && priceMatch;
+    });
+  }
+
+  private checkPriceRange(price: number, range: string): boolean {
+    switch(range) {
+      case 'lt10000': return price < 10000;
+      case '10000-15000': return price >= 10000 && price <= 15000;
+      case 'gt15000': return price > 15000;
+      default: return true;
+    }
   }
 
   get usersCart() {
     this.userCart =
+
       localStorage.getItem('usersCart') === null
         ? []
         : JSON.parse(localStorage.getItem('usersCart')!);

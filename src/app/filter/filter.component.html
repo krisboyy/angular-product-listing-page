@@ -1,11 +1,31 @@
 <div class="filter-container">
-    <h3>Battery Capacity</h3>
-    <hr>
-    <input type="checkbox" name="5000" id="5000"><label for="5000">5000 mAh</label><br>
-    <input type="checkbox" name="5200" id="5200"><label for="5200">5200 mAh</label><br>
+  <h3>Battery Capacity</h3>
+  <hr />
 
-    <h3>Price</h3>
-    <input type="checkbox" name="lt10000" id="lt1000"><label for="lt1000">&lt;Rs. 10,000</label><br>
-    <input type="checkbox" name="10-15" id="10-15"><label for="10-15">Rs. 10,000 - Rs. 15,000</label><br>
-    <input type="checkbox" name="gt15000" id="gt15000"><label for="gt15000">&gt;Rs. 15,000</label><br>
+  <input
+    type="checkbox"
+    name="5000"
+    id="battery5000"
+    [value]="5000"
+    (change)="updateBatteryFilter($event, 5000)"
+  /><label for="battery5000">5000 mAh</label><br />
+  <input
+    type="checkbox"
+    name="5200"
+    id="battery5200"
+    [value]="5200"
+    (change)="updateBatteryFilter($event, 5200)"
+  /><label for="battery5200">5200 mAh</label><br />
+
+  <h3>Price</h3>
+  <select
+    name="price-range"
+    id="price-range"
+    (change)="updatePriceFilter($event)"
+  >
+    <option value="">All Prices</option>
+    <option value="lt10000">Less than ₹10,000</option>
+    <option value="10000-15000">₹10,000 - ₹15,000</option>
+    <option value="gt15000">More than ₹15,000</option>
+  </select>
 </div>
