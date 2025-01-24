@@ -4,6 +4,7 @@ import { Product } from './product';
   providedIn: 'root',
 })
 export class ProductService {
+  private filteredProducts: Product[] = [];
   private products: Product[] = [
     {
       name: 'realme 12x 5G',

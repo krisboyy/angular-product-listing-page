@@ -1,5 +1,13 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 main{
-    display: grid;
-    grid-template-columns: auto auto;
+    // display: grid;
+    // grid-template-columns: auto auto;
+    display: flex;
     padding: 0 20% 0 20%;
+    flex-grow: 1;
 }

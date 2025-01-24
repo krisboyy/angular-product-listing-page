@@ -2,11 +2,9 @@
     <app-cart (closeCartEvent)="closeCart()"></app-cart>
 }
 
-<div class="header-bg">
-    <div class="header-items">
-        <div class="logo"><p>Product<br/>Listing<br/>Page</p></div>
-        <div class="search-bar"></div>
-        <div class="login-button">Login</div>
-        <div class="cartIcon" (click)="openCart()"><img src="assets/cart-icon.png" alt="Cart Icon"><span>{{usersCartLength}}</span></div>
-    </div>
+<div class="header-items">
+    <div class="logo"><p>Product<br/>Listing<br/>Page</p></div>
+    <div class="search-bar"></div>
+    <div class="login-button">Login</div>
+    <div class="cartIcon" (click)="openCart()"><img src="assets/cart-icon.png" alt="Cart Icon"><span>{{usersCartLength}}</span></div>
 </div>
