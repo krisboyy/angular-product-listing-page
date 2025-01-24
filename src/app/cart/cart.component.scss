@@ -1,0 +1,30 @@
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+dialog{
+    width: 80vw;
+    height: 80vh;
+    background-color: azure;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    overflow:scroll;
+    padding: 1rem;
+    margin: 0;
+    position: relative;
+    padding: 2rem;
+}
+hr{
+    margin: 0.5rem 0 1rem 0;
+    color: rgba(190, 190, 190, 0.541);
+}

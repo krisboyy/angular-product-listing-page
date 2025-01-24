@@ -1,0 +1,12 @@
+<div *ngFor="let product of products" class="product-container">
+    <div class="product-image"><img src="{{product.image | img}}" alt=""></div>
+    <div class="product-details">
+        <h3>{{product.name}} ({{product.color}}, {{product.rom}} GB)</h3>
+    </div>
+    <div class="priceAndCart">
+        <h2>₹{{product.price | number}}</h2>
+        <p class="mrp">₹{{product.mrp | number}}</p><p class="discountPerc">{{(((product.mrp/product.price))*100-100).toFixed(0)}}% off</p>
+        <p class="delivery">Free delivery</p>
+        <button (click)="removeProductFromCart(product)">Remove from cart</button>
+    </div>
+</div>
